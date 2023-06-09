@@ -1,0 +1,28 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: create new user sagar
+    tags: always
+    user:
+      name: sagar
+      groups: root
+  
+  - name: add public ssh key for sagar
+    tags: always
+    authorized_key: 
+      user: sagar
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOHo95NolbHB7aigsf7U9H0vPKnhTKgwHXoS5tHgntDx ansible key"
+
+  - name: ad sudoer file for sager
+    tags: always
+    copy:
+      src: sudoer_sagar
+      dest: /etc/sudoers.d/sagar
+      owner: root
+      group: root    
+    
+
+

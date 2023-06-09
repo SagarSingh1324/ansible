@@ -1,0 +1,11 @@
+---
+
+- hosts: Ubuntu_servers
+  become: true
+  roles:
+    - Ubuntu
+
+- hosts: SLES_servers
+  become: true
+  roles:
+    - SLES

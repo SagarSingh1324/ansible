@@ -1,0 +1,25 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: install apache and php for Ubuntu servers
+    tags: apache,apache2,ubuntu
+    apt:
+      name:
+        - apache2
+        - libapache2-mod-php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+  - name: install apache and php for SLES servers
+    tags: apache,apache2,php,SLES
+    zypper:
+      name:
+        - apache2
+        - php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "SLES"

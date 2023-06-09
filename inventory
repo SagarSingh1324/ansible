@@ -1,3 +1,6 @@
-[web_servers]
+[Ubuntu_servers]
 ubuntu@100.25.219.96
-ubuntu@100.24.60.67 
+ubuntu@100.24.60.67
+
+[SLES_servers]
+ec2-user@54.165.41.99 

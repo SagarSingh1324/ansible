@@ -1,0 +1,8 @@
+- name: install apache and php for Ubuntu servers
+  tags: apache,apache2,php,Ubuntu
+  apt:
+    name:
+      - apache2
+      - php
+    state: latest
+    update_cache: yes

@@ -11,6 +11,15 @@
     when: ansible_distribution == "Ubuntu"
     tags: [update,upgrade]
 
+  # - name: install terraform
+  # unarchive:
+  # src: https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip
+  #   dest: /usr/local/bin
+  #   remote_src: yes
+  #   mode: 0755
+  #   owner: root
+  #   group: root
+
 - hosts: all
   become: true
   tasks:
@@ -19,12 +28,19 @@
     apt:
       name: apache2
     tags: [apache,apache2,server]
+    when: ansible_distribution = "Ubuntu"
 
   - name: install vim package
     apt:
       name: vim
     tags: [vim,text,editor]
+    when: ansible_distribution = "Ubuntu"
 
+  - name: install vim package
+    zypper:
+      name: vim
+    tags: sles,vim
+    when: ansible_distribution = "SLES"    
 
   - name: copy html file for site
     tags: apache,apache,apache2,httpd
